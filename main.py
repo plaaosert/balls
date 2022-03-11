@@ -26,7 +26,7 @@ def successor_angle(board: data.Board, ball: data.Ball) -> data.ball_state:
         int(radius * math.sin(math.radians(angle_next)) + origin.y)
     )
 
-    return position, ball.col
+    return position, (255 - int(5 * abs(90 - angle_next)), int(5 * abs(90 - angle_next)), 4 * ball.get_data("index"))
 
 
 balls = [
@@ -41,7 +41,8 @@ for index, ball in enumerate(balls):
         "origin", vector.Vector2(400, 600),
         "speed", 1 + (0.1 * index),
         "radius", -32 - (index * 8),
-        "direction", 1
+        "direction", 1,
+        "index", index
     )
 
 
