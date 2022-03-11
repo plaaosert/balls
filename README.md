@@ -1,3 +1,3 @@
 balls
 
-![balls preview](https://github.com/plaaosert/balls/blob/master/balls_monocol.gif?raw=true)
+![balls preview](https://raw.githubusercontent.com/plaaosert/balls/main/balls_monocol.gif)
