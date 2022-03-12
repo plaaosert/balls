@@ -1,7 +1,9 @@
 balls
 
-![balls preview](https://raw.githubusercontent.com/plaaosert/balls/main/balls_col.gif)
-
 an "animation framework" using "balls" which define a single successor function that determines their next position and colour.
 
-![balls preview](https://raw.githubusercontent.com/plaaosert/balls/main/balls_monocol.gif)
+requires imageio (`pip install imageio`) for gif rendering or `ffmpeg` for mp4
+
+![balls pendulum preview, coloured](https://raw.githubusercontent.com/plaaosert/balls/main/balls_col.gif)
+
+![balls pendulum preview, no colour](https://raw.githubusercontent.com/plaaosert/balls/main/balls_monocol.gif)
