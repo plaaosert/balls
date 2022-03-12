@@ -1,8 +1,8 @@
+# ball pendulum. set of 60 balls moving at different speeds, the further ones moving faster. creates chaotic motion
+
 import math
 
-import render
-import data
-import vector
+from balls import render, data, vector
 
 
 def successor_angle(board: data.Board, ball: data.Ball) -> data.ball_state:

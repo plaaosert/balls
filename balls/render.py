@@ -39,4 +39,7 @@ def draw_frames(board: data.Board, ball_size: int, fname: str, num_frames: int):
         draw_balls(board.dimensions, board.serialize(), ball_size, os.path.join("tmp", "frame_{}.png".format(i)))
         board.step()
 
-    stitch_frames("tmp", 1 / 24, num_frames, fname)
+    if fname.endswith(".gif"):
+        stitch_frames("tmp", 1 / 24, num_frames, fname)
+    else:
+        os.system("ffmpeg -r 24 -i frame_%01d.png -vcodec h264 -y {}".format(fname))

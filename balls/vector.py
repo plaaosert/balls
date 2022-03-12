@@ -1,4 +1,4 @@
-class Vector2:  # to be honest this is me showing off
+class Vector2:
     def __init__(self, x, y):
         self.x = x
         self.y = y
@@ -51,7 +51,7 @@ class Vector2:  # to be honest this is me showing off
         return ((self.x ** 2) + (self.y ** 2)) ** (1 / 2)  # sqrt
 
 
-class Vector3:  # to be honest this is me showing off
+class Vector3:
     def __init__(self, x, y, z):
         self.x = x
         self.y = y
