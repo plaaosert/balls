@@ -12,3 +12,5 @@ examples: `pendulum.py`, `avoidance.py`
 
 https://user-images.githubusercontent.com/13522266/158003099-03254f17-4749-4637-8997-3d7da2bef494.mp4
 
+https://user-images.githubusercontent.com/13522266/158003750-41e8a1f7-c76e-4d5f-a1ed-b062b31c0fed.mp4
+
