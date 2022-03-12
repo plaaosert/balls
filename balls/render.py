@@ -29,17 +29,17 @@ def stitch_frames(folder: str, delay: float, length: int, out_path: str):
     imageio.mimsave(out_path, images, duration=delay)
 
 
-def redraw_frames(fname: str, num_frames: int):
+def redraw_frames(fname: str, num_frames: int, framerate: int = 24):
     if fname.endswith(".gif"):
         stitch_frames("tmp", 1 / 24, num_frames, fname)
     else:
         os.system(
-            "ffmpeg -hide_banner -loglevel error -r 24 -i tmp/frame_%d.png "
-            "-c:v libx264 -vf fps=24 -pix_fmt yuv420p -y {}".format(fname)
+            "ffmpeg -hide_banner -loglevel error -r {frames} -i tmp/frame_%d.png "
+            "-c:v libx264 -vf fps={frames} -pix_fmt yuv420p -y {}".format(fname, frames=framerate)
         )
 
 
-def draw_frames(board: data.Board, ball_size: int, fname: str, num_frames: int):
+def draw_frames(board: data.Board, ball_size: int, fname: str, num_frames: int, framerate: int = 24):
     if os.path.exists("tmp"):
         shutil.rmtree("tmp")
 
@@ -50,9 +50,9 @@ def draw_frames(board: data.Board, ball_size: int, fname: str, num_frames: int):
         board.step()
 
     if fname.endswith(".gif"):
-        stitch_frames("tmp", 1 / 24, num_frames, fname)
+        stitch_frames("tmp", 1 / framerate, num_frames, fname)
     else:
         os.system(
-            "ffmpeg -hide_banner -loglevel error -r 24 -i tmp/frame_%d.png "
-            "-c:v libx264 -vf fps=24 -pix_fmt yuv420p -y {}".format(fname)
+            "ffmpeg -hide_banner -loglevel error -r {frames} -i tmp/frame_%d.png "
+            "-c:v libx264 -vf fps={frames} -pix_fmt yuv420p -y {}".format(fname, frames=framerate)
         )
