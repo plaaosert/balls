@@ -48,4 +48,4 @@ for index, ball in enumerate(balls):
 
 board = data.Board(vector.Vector2(800, 800), balls)
 
-render.draw_frames(board, 4, "out.gif", 2000)
+render.draw_frames(board, 4, "out.mp4", 1000)

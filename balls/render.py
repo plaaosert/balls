@@ -4,8 +4,8 @@ import os
 import shutil
 import imageio
 
-import data
-from vector import Vector2
+from balls import data
+from balls.vector import Vector2
 
 
 def draw_balls(dimensions: Vector2, ball_info: List[data.ball_state], ball_size: int, fname: str):
@@ -29,6 +29,16 @@ def stitch_frames(folder: str, delay: float, length: int, out_path: str):
     imageio.mimsave(out_path, images, duration=delay)
 
 
+def redraw_frames(fname: str, num_frames: int):
+    if fname.endswith(".gif"):
+        stitch_frames("tmp", 1 / 24, num_frames, fname)
+    else:
+        os.system(
+            "ffmpeg -hide_banner -loglevel error -r 24 -i tmp/frame_%d.png "
+            "-c:v libx264 -vf fps=24 -pix_fmt yuv420p -y {}".format(fname)
+        )
+
+
 def draw_frames(board: data.Board, ball_size: int, fname: str, num_frames: int):
     if os.path.exists("tmp"):
         shutil.rmtree("tmp")
@@ -42,4 +52,7 @@ def draw_frames(board: data.Board, ball_size: int, fname: str, num_frames: int):
     if fname.endswith(".gif"):
         stitch_frames("tmp", 1 / 24, num_frames, fname)
     else:
-        os.system("ffmpeg -r 24 -i frame_%01d.png -vcodec h264 -y {}".format(fname))
+        os.system(
+            "ffmpeg -hide_banner -loglevel error -r 24 -i tmp/frame_%d.png "
+            "-c:v libx264 -vf fps=24 -pix_fmt yuv420p -y {}".format(fname)
+        )

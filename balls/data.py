@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import vector as v
+import balls.vector as v
 from typing import List, Hashable, Callable, Tuple, TypeVar, Union
 
 

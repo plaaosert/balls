@@ -14,6 +14,9 @@ class Vector2:
         else:
             raise ValueError("Accepted data types are float, int and Vector2.")
 
+    def __sub__(self, other):
+        return self + (-other)
+
     def __mul__(self, other):  # multiplies a vector2 by an int, or by another vector2
         if isinstance(other, Vector2):
             return Vector2(self.x * other.x, self.y * other.y)
@@ -46,6 +49,9 @@ class Vector2:
 
     def __eq__(self, other):
         return self.x == other.x and self.y == other.y
+
+    def sq_magnitude(self):
+        return (self.x ** 2) + (self.y ** 2)
 
     def magnitude(self):  # returns the magnitude of the vector2. (length of the vector)
         return ((self.x ** 2) + (self.y ** 2)) ** (1 / 2)  # sqrt
